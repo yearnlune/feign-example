@@ -1,0 +1,15 @@
+server:
+  port: 8122
+app:
+  another-service: http://localhost:8337/
+logging:
+  level:
+    io.github.yearnlune.feign.example.feign: DEBUG
+feign:
+  client:
+    config:
+      another:
+        request-interceptors:
+          - io.github.yearnlune.feign.example.feign.FeignHeaderInterceptor
+        error-decoder: io.github.yearnlune.feign.example.feign.FeignErrorDecoder
+        logger-level: headers
